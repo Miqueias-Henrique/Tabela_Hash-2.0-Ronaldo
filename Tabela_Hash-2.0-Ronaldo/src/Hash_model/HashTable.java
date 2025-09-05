@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class HashTable {
         private LinkedList<Pessoa>[] tabela;
         private int tamanho;
-        private int colissoes;
+        private int colisoes;
         private int comparacoesBusca;
 
         public HashTable(int tamanho) {
@@ -14,7 +14,7 @@ public class HashTable {
             for (int i = 0; i < tamanho; i++) {
                 tabela[i] = new LinkedList<>();
             }
-            colissoes = 0;
+            colisoes = 0;
             comparacoesBusca = 0;
         }
 
@@ -30,11 +30,12 @@ public class HashTable {
             } else {
                 for (Pessoa p : tabela[pos]) {
                     if (p.getCpf().equals(pessoa.getCpf())) {
-                        System.out.println("CPF já cadastrado, colisão à vista!");
+                        System.out.println("CPF já cadastrado, pessoa já existe! Digite um CPF que não tenha cadastro.");
+                        return;
                     }
                 }
                     if (!tabela[pos].isEmpty()) {
-                        colissoes++;
+                        colisoes++;
                     }
                     tabela[pos].add(pessoa);
                     System.out.println("Cadastro realizado!");
@@ -77,11 +78,7 @@ public class HashTable {
                     System.out.println();
                 }
             }
-            System.out.println("Número de colisões: " + colissoes);
+            System.out.println("Número de colisões: " + colisoes);
             System.out.println("Total de comparações em buscas: " + comparacoesBusca);
         }
     }
-
-
-
-
