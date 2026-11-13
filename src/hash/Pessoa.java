@@ -1,9 +1,9 @@
-package Hash_model;
+package hash;
 
-public class Pessoa implements ValidarCPF {
-    private String cpf;
-    private String nome;
-    private int idade;
+public class Pessoa implements ValidadorCPF {
+    private final String cpf;
+    private final String nome;
+    private final int idade;
 
     public Pessoa(String cpf, String nome, int idade) {
         this.cpf = cpf;
@@ -24,20 +24,12 @@ public class Pessoa implements ValidarCPF {
     }
 
     @Override
-    public boolean validadorCPF(){
-        if (cpf != null && cpf.length() == 11){
-            return true;
-        }
-        else {
-            System.out.println("CPF inválido. Verifique a quantidade de dígitos.");
-            return false;
-        }
-
+    public boolean isCpfValido() {
+        return cpf != null && cpf.matches("\\d{11}");
     }
 
     @Override
     public String toString() {
         return "CPF: " + cpf + ", Nome: " + nome + ", Idade: " + idade;
     }
-
 }
